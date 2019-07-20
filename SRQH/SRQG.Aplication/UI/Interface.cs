@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace SRQH.Repository.BookingFlow
+namespace SRQG.Aplication.UI
 {
-    public class RepositoryBookin : Repository
+    class Interface
     {
     }
 }

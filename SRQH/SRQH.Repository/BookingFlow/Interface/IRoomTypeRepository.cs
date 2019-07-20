@@ -6,7 +6,7 @@ using System.Text;
 
 namespace SRQH.Repository.BookingFlow.Interface
 {
-    public interface IRepositoryBookingPeriod : IRepository<BookingPeriod>
+    public interface IRoomTypeRepository : IRepository<RoomType>
     {
     }
 }

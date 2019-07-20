@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace SRQH.Repository.BookingFlow
+namespace SRQH.Business.BookingFlow.Interface
 {
-    public class RepositoryRoomType
+    public interface BookingIBusiness
     {
     }
 }
