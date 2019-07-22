@@ -8,9 +8,6 @@ namespace SRQH.Service.Service.BookingFlow
 {
     public class BookingService : IBookingService
     {
-        public void RoomAdd(List<Room> rooms, int Quantity)
-        {
-            throw new NotImplementedException();
-        }
+        
     }
 }

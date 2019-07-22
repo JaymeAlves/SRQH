@@ -7,6 +7,6 @@ namespace SRQH.Service.Service.BookingFlow.IService
 {
     public interface IBookingService
     {
-        void RoomAdd(List<Room> rooms, int Quantity);
+       
     }
 }

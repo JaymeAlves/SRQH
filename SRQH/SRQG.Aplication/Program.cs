@@ -1,5 +1,7 @@
 ﻿using SRQG.Aplication.UI;
+using SRQH.Business.BookingFlow;
 using SRQH.Domain.Entities.BookingFlow;
+using SRQH.Repository.BookingFlow;
 using SRQH.Service.Service.BookingFlow;
 using System;
 using System.Collections.Generic;
@@ -11,33 +13,46 @@ namespace SRQG.Aplication
     {
         static void Main(string[] args)
         {
-            BookingService bookingService = new BookingService();
-
-            List<Room> rooms = new List<Room>();
-            List<Booking> bookings = new List<Booking>();
-
             string options = "";
 
             UserInterface userInterface = new UserInterface();
 
-            //Bild Rooms
-
             //Bild a list of all enum values
             List<RoomType> roomTypes = Enum.GetValues(typeof(RoomType)).Cast<RoomType>().ToList();
 
-            int roomsQuantity = 0;
-            int availableRoomsQuantity = 0;
-            foreach (var type in roomTypes)
-            {
-                Console.WriteLine($"Digite a quantidade de quartos {type.ToString()} :");
-                roomsQuantity = Int32.Parse(Console.ReadLine());
+            #region Dependencies builds
 
-                Console.WriteLine($"Digite a quantidade de quartos {type.ToString()} disponíveis: ");
-                availableRoomsQuantity = Int32.Parse(Console.ReadLine());
-            }
+            #region repositories
+            RoomRepository roomRepository = new RoomRepository();
 
+            #endregion
 
+            #region Business
+            RoomBusiness roomBusiness = new RoomBusiness();
 
+            #endregion
+
+            #region Services
+            RoomService roomService = new RoomService(roomRepository, roomBusiness);
+
+            #endregion
+
+            #endregion
+
+            //#region Build many rooms
+            //int roomsQuantity = 0;
+            //int availableRoomsQuantity = 0;
+            //foreach (var type in roomTypes)
+            //{
+            //    userInterface.RequestRoomQuantity(type);
+            //    roomsQuantity = Int32.Parse(Console.ReadLine());
+
+            //    userInterface.RequestAvailableRoomQuantity(type);
+            //    availableRoomsQuantity = Int32.Parse(Console.ReadLine());
+
+            //    roomService.CreateManyRooms(type, roomsQuantity, availableRoomsQuantity);
+            //}
+            //#endregion
 
             while (options != "0")
             {
@@ -53,7 +68,7 @@ namespace SRQG.Aplication
                     case "1":
                         string roomOptions = "";
 
-                        userInterface.LoadRoonsOptions(rooms);
+                        userInterface.LoadRoonsOptions(roomService.ListRooms());
 
                         roomOptions = Console.ReadLine();
 
@@ -63,7 +78,27 @@ namespace SRQG.Aplication
                             {
                                 //Room add
                                 case "1":
+                                    Console.WriteLine("Escolha o tipo de quarto: ");
 
+                                    int i = 1;
+
+                                    foreach (var type in roomTypes)
+                                    {
+                                        Console.WriteLine($"{i}. {type.ToString()}");
+
+                                        i++;
+                                    }
+
+                                    int typePosition = Int32.Parse( Console.ReadLine() );
+
+                                    Console.WriteLine("O quarto disponível: (Y/N)");
+
+                                    bool enable = false;
+
+                                    if ("Y".Equals(Console.Read()) || "y".Equals(Console.Read()))
+                                        enable = true;
+
+                                    roomService.CreateRoom(roomTypes.ElementAt(typePosition - 1), enable);
                                     break;
 
                                 default:

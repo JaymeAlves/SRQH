@@ -26,6 +26,15 @@ namespace SRQG.Aplication.UI
 
         }
 
+        public void RequestRoomQuantity(RoomType type)
+        {
+            Console.WriteLine($"Digite a quantidade de quartos {type.ToString()} :");
+        }
+
+        public void RequestAvailableRoomQuantity(RoomType type)
+        {
+            Console.WriteLine($"Digite a quantidade de quartos {type.ToString()} disponíveis: ");
+        }
 
     }
 }

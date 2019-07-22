@@ -7,6 +7,8 @@ namespace SRQH.Service.Service.BookingFlow.IService
 {
     public interface IRoomService
     {
-        void CreateManyRooms(RoomType roomType, int quantityOfRooms, int quantityOfRoomsUnavailable);
+        void CreateManyRooms(RoomType roomType, int quantityOfRooms, int quantityOfRoomsAvailable);
+        List<Room> ListRooms();
+        void CreateRoom(RoomType roomType, bool availabilite);
     }
 }

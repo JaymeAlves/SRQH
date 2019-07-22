@@ -9,12 +9,13 @@ namespace SRQH.Domain.Entities.BookingFlow
     {
         public RoomType RoomType { get; set; }
         public bool Available { get; set; }
-        public int MyProperty { get; set; }
+        public bool Booked { get; set; }
 
-        public Room()
+        public Room(RoomType roomType, bool available, bool booked)
         {
-
+            RoomType = roomType;
+            Available = available;
+            Booked = booked;
         }
-        
     }
 }
