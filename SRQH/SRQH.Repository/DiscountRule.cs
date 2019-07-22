@@ -5,10 +5,7 @@ using System.Text;
 
 namespace SRQH.Domain.Entities.BookingFlow
 {
-    public enum RoomType
+    public class DiscountRule : BaseEntity
     {
-        SINGLE,
-        STANDARD,
-        LUXO
     }
 }

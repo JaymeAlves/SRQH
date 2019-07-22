@@ -5,8 +5,8 @@ using System.Text;
 
 namespace SRQH.Service.Service.BookingFlow.IService
 {
-    public interface IBookingService
+    public interface IRoomService
     {
-        void RoomAdd(List<Room> rooms, int Quantity);
+        void CreateManyRooms(RoomType roomType, int quantityOfRooms, int quantityOfRoomsUnavailable);
     }
 }
