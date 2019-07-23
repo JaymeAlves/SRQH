@@ -68,37 +68,54 @@ namespace SRQG.Aplication
                     case "1":
                         string roomOptions = "";
 
-                        userInterface.LoadRoonsOptions(roomService.ListRooms());
-
-                        roomOptions = Console.ReadLine();
-
                         while (roomOptions != "0")
                         {
+                            Console.Clear();
+
+                            userInterface.LoadRoonsOptions(roomService.ListRooms());
+
+                            roomOptions = Console.ReadLine();
+
                             switch (roomOptions)
                             {
                                 //Room add
                                 case "1":
-                                    Console.WriteLine("Escolha o tipo de quarto: ");
-
-                                    int i = 1;
-
-                                    foreach (var type in roomTypes)
-                                    {
-                                        Console.WriteLine($"{i}. {type.ToString()}");
-
-                                        i++;
-                                    }
-
-                                    int typePosition = Int32.Parse( Console.ReadLine() );
-
-                                    Console.WriteLine("O quarto disponível: (Y/N)");
-
                                     bool enable = false;
 
-                                    if ("Y".Equals(Console.Read()) || "y".Equals(Console.Read()))
+                                    userInterface.RequestRoomType();
+
+                                    userInterface.ListRoomType(roomTypes);
+
+                                    int typePosition = Int32.Parse(Console.ReadLine());
+
+                                    userInterface.RequestRoomAvailability();
+                                    
+                                    string availableRoom = Console.ReadLine();
+
+                                    if (availableRoom.Equals("Y") || availableRoom.Equals("y"))
                                         enable = true;
 
                                     roomService.CreateRoom(roomTypes.ElementAt(typePosition - 1), enable);
+                                    break;
+
+                                //Room maintenance
+                                case "2":
+                                    userInterface.RequestRoomTypeToActive();
+
+                                    userInterface.ListRoomType(roomTypes);
+
+                                    int typePosition = Int32.Parse(Console.ReadLine());
+
+                                    try
+                                    {
+
+                                    }
+                                    catch (Exception e)
+                                    {
+
+                                        throw e;
+                                    }
+
                                     break;
 
                                 default:

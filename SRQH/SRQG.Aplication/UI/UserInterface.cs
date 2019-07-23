@@ -21,7 +21,7 @@ namespace SRQG.Aplication.UI
         {
             Console.WriteLine("*** Quartos ***");
             Console.WriteLine($"Quantidade de quartos: {list.Count}");
-            Console.WriteLine("1. Alterar quantidade de quartos");
+            Console.WriteLine("1. Adicionar quarto");
             Console.WriteLine("0. Sair");
 
         }
@@ -36,5 +36,31 @@ namespace SRQG.Aplication.UI
             Console.WriteLine($"Digite a quantidade de quartos {type.ToString()} disponíveis: ");
         }
 
+        public void RequestRoomType()
+        {
+            Console.WriteLine("Escolha o tipo de quarto: ");
+        }
+
+        public void ListRoomType(List<RoomType> roomTypes)
+        {
+            int i = 1;
+
+            foreach (var type in roomTypes)
+            {
+                Console.WriteLine($"{i}. {type.ToString()}");
+
+                i++;
+            }
+        }
+
+        public void RequestRoomAvailability()
+        {
+            Console.WriteLine("O quarto está disponível (Y/N): ");
+        }
+
+        public void RequestRoomTypeToActive()
+        {
+            Console.WriteLine("Escolha um tipo de quarto ativar:");
+        }
     }
 }

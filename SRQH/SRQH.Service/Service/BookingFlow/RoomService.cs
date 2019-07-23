@@ -43,5 +43,19 @@ namespace SRQH.Service.Service.BookingFlow
         {
             _roomRepository.Create(new Room(roomType, availabilite, false));
         }
+
+        public void ActiveRoom()
+        {
+            try
+            {
+                List<Room> rooms = _roomRepository.Get();
+
+
+            }
+            catch (Exception e)
+            {
+                throw e;
+            }
+        }
     }
 }
